@@ -1,0 +1,257 @@
+:root {
+  --bg-pink: #ffd9e8;
+  --bg-pink-soft: #ffe8f1;
+  --card: #fff6fa;
+  --ink: #4a2131;
+  --yes: #ff4f91;
+  --yes-hover: #f73783;
+  --no: #ffffff;
+  --border: #f0a5c4;
+  --focus: #7a2450;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+  color: var(--ink);
+}
+
+.page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-proposal {
+  background: radial-gradient(circle at top, var(--bg-pink-soft), var(--bg-pink));
+}
+
+.page-success {
+  background: radial-gradient(circle at top, #ffeef5, #ffdfe9);
+}
+
+.falling-hearts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.falling-heart {
+  position: absolute;
+  top: -12%;
+  color: #ff4f91;
+  opacity: 0.8;
+  animation-name: fall-heart;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fall-heart {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(120vh) rotate(360deg);
+    opacity: 0.1;
+  }
+}
+
+.card {
+  width: min(92vw, 540px);
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  padding: 1rem 1rem 1.5rem;
+  box-shadow: 0 10px 30px rgba(180, 71, 116, 0.18);
+  text-align: center;
+  z-index: 2;
+}
+
+.hero-gif {
+  display: block;
+  width: min(100%, 300px);
+  height: auto;
+  margin: 0.25rem auto 1rem;
+  border-radius: 14px;
+  border: 2px solid #ffc3db;
+  background: #fff;
+}
+
+.envelope {
+  position: relative;
+  width: 200px;
+  height: 130px;
+  margin: 0.2rem auto 0.9rem;
+  background: #ffd0e3;
+  border: 2px solid #ea8fb5;
+  border-radius: 8px;
+}
+
+.envelope-flap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-top: 66px solid #ffc0da;
+}
+
+.envelope-heart {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  font-size: 1.4rem;
+  color: #e6428b;
+}
+
+.headline {
+  margin: 0.4rem 0 0.3rem;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  line-height: 1.2;
+}
+
+.message {
+  min-height: 1.6rem;
+  margin: 0.3rem 0 1rem;
+  font-size: 1.06rem;
+  font-weight: 600;
+}
+
+.buttons-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 3.2rem;
+}
+
+.btn {
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 0.68rem 1.2rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 320ms ease, background-color 160ms ease, box-shadow 160ms ease,
+    left 320ms ease, top 320ms ease;
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.btn-yes {
+  background: var(--yes);
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(220, 42, 116, 0.38);
+  transform-origin: center;
+}
+
+.btn-yes:hover {
+  background: var(--yes-hover);
+}
+
+.yes-dominating {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  border-radius: 0;
+  z-index: 30;
+  transform: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(2rem, 10vw, 4rem);
+}
+
+.btn-no {
+  position: absolute;
+  z-index: 10;
+  background: var(--no);
+  color: var(--ink);
+  border-color: #cf6e99;
+  box-shadow: 0 4px 12px rgba(160, 64, 100, 0.2);
+}
+
+.btn-no:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.success-card {
+  width: min(92vw, 580px);
+}
+
+.success-headline {
+  margin-top: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.us-photo {
+  width: min(100%, 340px);
+  border-radius: 16px;
+  border: 2px solid #f5a8c7;
+  display: block;
+  margin: 0 auto 1rem;
+}
+
+.btn-back {
+  background: #fff;
+  color: var(--ink);
+  border-color: #d57aa5;
+}
+
+.btn-back:hover {
+  background: #fff5f9;
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 0.85rem 0.85rem 1.25rem;
+    border-radius: 16px;
+  }
+
+  .envelope {
+    width: 170px;
+    height: 108px;
+  }
+
+  .envelope-flap {
+    border-left-width: 85px;
+    border-right-width: 85px;
+    border-top-width: 54px;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 0.62rem 1.05rem;
+  }
+}
